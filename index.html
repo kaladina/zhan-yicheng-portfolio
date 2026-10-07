@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>詹逸诚 YiCheng Zhan | 机械工程师 · 技术创新者</title>
+  <meta name="description" content="詹逸诚 - 机械工程专业，专注智能设备研发与技术创新。国家级金奖获得者，多项发明专利拥有者。" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <!-- Canvas 粒子背景 -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+  <!-- 光标跟随光晕 -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-mark">YZ</span>
+        <span class="logo-line"></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active" data-section="hero">首页</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">关于</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">项目</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">经历</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">技能</a></li>
+        <li><a href="#honors" class="nav-link" data-section="honors">荣誉</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">联系</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero 首屏 -->
+  <section id="hero" class="hero section">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-scan-line"></div>
+
+    <div class="container hero-container">
+      <div class="hero-left">
+        <div class="hero-label">
+          <span class="label-dot"></span>
+          <span>MECHANICAL ENGINEER · INNOVATOR</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="title-line line-1">
+            <span class="char-wrap">詹</span><span class="char-wrap">逸</span><span class="char-wrap">诚</span>
+          </span>
+          <span class="title-line line-2 hero-subtitle-line">
+            机械工程师 · 技术创新者
+          </span>
+        </h1>
+
+        <p class="hero-subtitle">
+          <span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
+        </p>
+
+        <p class="hero-desc">
+          以机械为骨，以代码为魂，打造下一代智能工业设备。<br/>
+          国家级金奖获得者 · 12项专利持有者 · 多学科交叉探索者
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-gold">
+            <span class="btn-text">查看项目</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <span class="btn-text">联系我</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-block">
+            <span class="stat-num" data-target="12">0</span>
+            <span class="stat-unit">项</span>
+            <span class="stat-label">专利 & 软著</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="3">0</span>
+            <span class="stat-unit">个</span>
+            <span class="stat-label">国家级奖项</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-block">
+            <span class="stat-num" data-target="10">0</span>
+            <span class="stat-unit">+</span>
+            <span class="stat-label">企业技术对接</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="hexagon-ring ring-1"></div>
+          <div class="hexagon-ring ring-2"></div>
+          <div class="hexagon-ring ring-3"></div>
+          <div class="hero-core">
+            <div class="core-inner">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <polygon points="100,10 175,50 175,150 100,190 25,150 25,50" 
+                         fill="none" stroke="url(#coreGrad)" stroke-width="2" opacity="0.8"/>
+                <polygon points="100,30 155,60 155,140 100,170 45,140 45,60" 
+                         fill="rgba(255,215,0,0.05)" stroke="url(#coreGrad)" stroke-width="1" opacity="0.6"/>
+                <text x="100" y="105" text-anchor="middle" font-size="36" font-weight="900" 
+                      fill="url(#coreGrad)" font-family="Orbitron, sans-serif">YZ</text>
+              </svg>
+            </div>
+            <div class="core-particles"></div>
+          </div>
+
+          <!-- 浮动标签 -->
+          <div class="floating-tag tag-1">
+            <span class="tag-icon">⚙</span>
+            <span class="tag-text">机械设计</span>
+          </div>
+          <div class="floating-tag tag-2">
+            <span class="tag-icon">◈</span>
+            <span class="tag-text">电气控制</span>
+          </div>
+          <div class="floating-tag tag-3">
+            <span class="tag-icon">👁</span>
+            <span class="tag-text">机器视觉</span>
+          </div>
+          <div class="floating-tag tag-4">
+            <span class="tag-icon">✦</span>
+            <span class="tag-text">AI工具</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 滚动提示 -->
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- 关于我 -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">
+          <span class="title-cn">关于我</span>
+          <span class="title-en">ABOUT ME</span>
+        </h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card glass-card">
+          <div class="card-corner tl"></div>
+          <div class="card-corner tr"></div>
+          <div class="card-corner bl"></div>
+          <div class="card-corner br"></div>
+
+          <div class="about-profile">
+            <div class="profile-avatar">
+              <div class="avatar-ring"></div>
+              <div class="avatar-inner">
+                <img src="avatar.jpg" alt="詹逸诚" class="avatar-img" />
+              </div>
+            </div>
+            <div class="profile-info">
+              <h3 class="profile-name">詹逸诚</h3>
+              <p class="profile-title">机械工程 · 技术创新者</p>
+              <div class="profile-tags">
+                <span class="p-tag">22岁</span>
+                <span class="p-tag">共青团员</span>
+                <span class="p-tag">本科在读</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-bio">
+            <p>
+              集美大学诚毅学院机械工程（机电方向）专业在读，专注于智能工业设备的研发与技术创新。
+              作为项目学生负责人，带领团队完成多款智能设备从概念到样机落地的全流程开发。
+            </p>
+            <p>
+              具备机械设计、电气控制、机器视觉的跨学科技术能力，
+              同时熟练掌握 AI 工具链赋能工程设计。已获得国家级金奖等多项荣誉，
+              拥有 12 项专利及软件著作权，项目成果被多家权威媒体报道。
+            </p>
+          </div>
+        </div>
+
+        <div class="about-advantages">
+          <h3 class="advantages-title">核心优势</h3>
+          <div class="advantage-list">
+            <div class="advantage-item">
+              <div class="adv-icon">🏆</div>
+              <div class="adv-content">
+                <h4>创新竞赛成绩突出</h4>
+                <p>中国国际大学生创新大赛国家级金奖，12项专利与软著</p>
+              </div>
+            </div>
+            <div class="advantage-item">
+              <div class="adv-icon">🔧</div>
+              <div class="adv-content">
+                <h4>客户现场落地经验</h4>
+                <p>参与2款工业智能设备开发，样机落地奥佳华等头部企业</p>
+              </div>
+            </div>
+            <div class="advantage-item">
+              <div class="adv-icon">🎯</div>
+              <div class="adv-content">
+                <h4>技术方案演示能力</h4>
+                <p>面向宁德时代、ABB等企业完成技术汇报与产品演示10+场</p>
+              </div>
+            </div>
+            <div class="advantage-item">
+              <div class="adv-icon">⚡</div>
+              <div class="adv-content">
+                <h4>复合机电技术储备</h4>
+                <p>覆盖机械、电气、视觉三大技术模块，适配自动化设备需求</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目经历 -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="section-number">02</span>
+        <h2 class="section-title">
+          <span class="title-cn">项目经历</span>
+          <span class="title-en">PROJECTS</span>
+        </h2>
+        <div class="title-line"></div>
+        <p class="section-sub">从概念到落地，每个项目都是一次技术突破</p>
+      </div>
+
+      <div class="projects-timeline">
+        <!-- 项目1 -->
+        <div class="project-item reveal-item">
+          <div class="project-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="project-card glass-card tilt-card">
+            <div class="project-header">
+              <span class="project-date">2023.10 - 2024.10</span>
+              <span class="project-role">项目学生负责人</span>
+            </div>
+            <h3 class="project-title">智能寻穴按摩设备</h3>
+            <div class="project-tags">
+              <span class="p-tag gold">国家级金奖</span>
+              <span class="p-tag">机械设计</span>
+              <span class="p-tag">机器视觉</span>
+              <span class="p-tag">ROS</span>
+            </div>
+            <p class="project-desc">
+              面向康复器械制造企业，针对"穴位定位不准、力度控制欠佳"的行业痛点，
+              研发自动穴位识别智能按摩整机，提供成套设备研发配套解决方案。
+            </p>
+            <div class="project-highlights">
+              <div class="highlight">
+                <span class="h-icon">⚙</span>
+                <span>SolidWorks机械臂结构设计 + ROS运动轨迹规划</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">👁</span>
+                <span>YOLO+BBX视觉穴位定位算法 + 力度反馈控制</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">🏢</span>
+                <span>奥佳华集团实地测试，推动3轮设备迭代</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <span class="result-badge">🏆 国家级金奖</span>
+              <span class="result-badge">📰 央广网专题报道</span>
+              <span class="result-badge">🔬 官方科技查新</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目2 -->
+        <div class="project-item reveal-item">
+          <div class="project-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="project-card glass-card tilt-card">
+            <div class="project-header">
+              <span class="project-date">2024.06 - 2025.10</span>
+              <span class="project-role">项目学生负责人</span>
+            </div>
+            <h3 class="project-title">智能齿轮润滑设备</h3>
+            <div class="project-tags">
+              <span class="p-tag gold">国家级铜奖</span>
+              <span class="p-tag">PLC控制</span>
+              <span class="p-tag">视觉检测</span>
+              <span class="p-tag">TIA Portal</span>
+            </div>
+            <p class="project-desc">
+              针对精密齿轮加工产线人工涂油厚薄不均、物料损耗大、自动化程度低的行业痛点，
+              完成竞品调研与成本预估，输出标准化设备落地解决方案。
+            </p>
+            <div class="project-highlights">
+              <div class="highlight">
+                <span class="h-icon">⚙</span>
+                <span>SolidWorks精密涂油机构三维建模与工程图</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">👁</span>
+                <span>OpenCV+YOLO齿轮尺寸视觉识别系统</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">⚡</span>
+                <span>TIA Portal PLC自控程序开发 + 厚度检测预警</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <span class="result-badge">🥉 国家级铜奖</span>
+              <span class="result-badge">🥇 省三维建模一等奖</span>
+              <span class="result-badge">🔬 行业首创</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目3 -->
+        <div class="project-item reveal-item">
+          <div class="project-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          <div class="project-card glass-card tilt-card">
+            <div class="project-header">
+              <span class="project-date">2025.09 - 至今</span>
+              <span class="project-role">核心研发人员</span>
+            </div>
+            <h3 class="project-title">无人机收割水稻设备</h3>
+            <div class="project-tags">
+              <span class="p-tag gold">国家级大创</span>
+              <span class="p-tag">AI模型</span>
+              <span class="p-tag">农业装备</span>
+              <span class="p-tag">结构设计</span>
+            </div>
+            <p class="project-desc">
+              面向丘陵山地杂交水稻制种人工收割效率低、授粉不可控的核心需求，
+              设计农机辅助作业机械结构，搭建作物识别AI模型，完成田间实地测试。
+            </p>
+            <div class="project-highlights">
+              <div class="highlight">
+                <span class="h-icon">⚙</span>
+                <span>农机辅助作业机械结构设计与优化</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">🤖</span>
+                <span>作物识别AI模型搭建与训练</span>
+              </div>
+              <div class="highlight">
+                <span class="h-icon">🌾</span>
+                <span>建宁水稻基地3轮田间实地测试</span>
+              </div>
+            </div>
+            <div class="project-result">
+              <span class="result-badge">📋 国家级大创立项</span>
+              <span class="result-badge">🥉 国家级铜奖</span>
+              <span class="result-badge">✅ 田间稳定测试</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 实习经历 -->
+  <section id="experience" class="experience section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="section-number">03</span>
+        <h2 class="section-title">
+          <span class="title-cn">实习经历</span>
+          <span class="title-en">EXPERIENCE</span>
+        </h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="exp-grid">
+        <div class="exp-card glass-card reveal-item tilt-card">
+          <div class="exp-header">
+            <div class="exp-logo">
+              <span class="logo-text">Airtac</span>
+            </div>
+            <div class="exp-meta">
+              <h3>亚德客国际集团</h3>
+              <span class="exp-role">技术支持 · 实习</span>
+              <span class="exp-date">2026.07 - 2026.08</span>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>
+              <span class="li-dot"></span>
+              <span>系统学习气动元件工作原理、选型逻辑与典型气动回路设计</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>参与多种型号气缸密封性检测、响应时间测试与耐久性验证</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>跟进客户现场设备异常排查，协助故障定位与解决方案输出</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>参与客户技术咨询响应，输出产品介绍演示PPT</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="exp-card glass-card reveal-item tilt-card">
+          <div class="exp-header">
+            <div class="exp-logo">
+              <span class="logo-text">一拖</span>
+            </div>
+            <div class="exp-meta">
+              <h3>中国一拖集团</h3>
+              <span class="exp-role">机械工程师 · 实习</span>
+              <span class="exp-date">2026.03 - 2026.04</span>
+            </div>
+          </div>
+          <ul class="exp-list">
+            <li>
+              <span class="li-dot"></span>
+              <span>深入拖拉机总装生产线，跟进变速箱预装等核心工序</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>操作游标卡尺、三坐标等量具进行尺寸与平面度检测</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>参与车间5S管理与设备基础维护，排查产线突发故障</span>
+            </li>
+            <li>
+              <span class="li-dot"></span>
+              <span>针对零部件装配卡点提出工艺改进建议</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能专长 -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="section-number">04</span>
+        <h2 class="section-title">
+          <span class="title-cn">技能专长</span>
+          <span class="title-en">SKILLS</span>
+        </h2>
+        <div class="title-line"></div>
+        <p class="section-sub">多学科交叉技术栈，全链条工程能力</p>
+      </div>
+
+      <div class="skills-container">
+        <!-- 机械设计 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon">⚙</span>
+            <h3>机械设计</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="SolidWorks">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/dassaultsystemes.svg" alt="SolidWorks" class="skill-logo-img" /></div>
+              <span class="skill-name">SolidWorks</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+            </div>
+            <div class="skill-item" title="AutoCAD">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/autodesk.svg" alt="AutoCAD" class="skill-logo-img" /></div>
+              <span class="skill-name">AutoCAD</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item" title="ANSYS">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/ansys.svg" alt="ANSYS" class="skill-logo-img" /></div>
+              <span class="skill-name">ANSYS</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item" title="UG NX">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/siemens.svg" alt="UG NX" class="skill-logo-img" /></div>
+              <span class="skill-name">UG NX</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+            </div>
+            <div class="skill-item" title="Pro/E (Creo)">
+              <div class="skill-icon"><i class="fa-solid fa-cube"></i></div>
+              <span class="skill-name">Pro/E (Creo)</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 电气控制 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-bolt"></i></span>
+            <h3>电气控制</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="TIA Portal">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/siemens.svg" alt="TIA Portal" class="skill-logo-img" /></div>
+              <span class="skill-name">TIA Portal 博途</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-item" title="PLC编程">
+              <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
+              <span class="skill-name">PLC 编程</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 机器视觉 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-eye"></i></span>
+            <h3>机器视觉</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="OpenCV">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/opencv.svg" alt="OpenCV" class="skill-logo-img" /></div>
+              <span class="skill-name">OpenCV</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item" title="YOLO">
+              <div class="skill-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <span class="skill-name">YOLO</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 编程算法 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-code"></i></span>
+            <h3>编程开发</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="Python">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/python.svg" alt="Python" class="skill-logo-img" /></div>
+              <span class="skill-name">Python</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item" title="C++">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/cplusplus.svg" alt="C++" class="skill-logo-img" /></div>
+              <span class="skill-name">C++</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+            </div>
+            <div class="skill-item" title="ROS">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/ros.svg" alt="ROS" class="skill-logo-img" /></div>
+              <span class="skill-name">ROS</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 办公软件 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-briefcase"></i></span>
+            <h3>办公工具</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="Microsoft Office">
+              <div class="skill-icon"><i class="fa-solid fa-file-lines"></i></div>
+              <span class="skill-name">Microsoft Office</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+            </div>
+            <div class="skill-item" title="WPS">
+              <div class="skill-icon"><i class="fa-solid fa-file-word"></i></div>
+              <span class="skill-name">WPS</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item" title="Visio">
+              <div class="skill-icon"><i class="fa-solid fa-diagram-project"></i></div>
+              <span class="skill-name">Visio</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item" title="XMind">
+              <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+              <span class="skill-name">XMind</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-item" title="Canva">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/canva.svg" alt="Canva" class="skill-logo-img" /></div>
+              <span class="skill-name">Canva</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 多媒体 -->
+        <div class="skill-category reveal-item">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-film"></i></span>
+            <h3>多媒体创作</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item" title="Premiere Pro">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/adobepremierepro.svg" alt="Premiere Pro" class="skill-logo-img" /></div>
+              <span class="skill-name">Premiere Pro</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item" title="After Effects">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/adobeaftereffects.svg" alt="After Effects" class="skill-logo-img" /></div>
+              <span class="skill-name">After Effects</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+            </div>
+            <div class="skill-item" title="Audition">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/adobeaudition.svg" alt="Audition" class="skill-logo-img" /></div>
+              <span class="skill-name">Audition</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
+            </div>
+            <div class="skill-item" title="剪映 CapCut">
+              <div class="skill-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/bytedance.svg" alt="剪映" class="skill-logo-img" /></div>
+              <span class="skill-name">剪映</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item" title="Studio One">
+              <div class="skill-icon"><i class="fa-solid fa-music"></i></div>
+              <span class="skill-name">Studio One</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 60%"></div></div>
+            </div>
+            <div class="skill-item" title="FL Studio">
+              <div class="skill-icon"><i class="fa-solid fa-headphones"></i></div>
+              <span class="skill-name">FL Studio (水果)</span>
+              <div class="skill-bar"><div class="skill-fill" style="width: 55%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI工具 -->
+        <div class="skill-category reveal-item skill-wide">
+          <div class="cat-header">
+            <span class="cat-icon"><i class="fa-solid fa-robot"></i></span>
+            <h3>AI 工具链</h3>
+            <span class="cat-line"></span>
+          </div>
+          <div class="ai-tools-grid">
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-deepseek"><i class="fa-solid fa-robot"></i></div>
+              <span class="ai-name">DeepSeek</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/coze.svg" alt="Coze" class="ai-logo-img" /></div>
+              <span class="ai-name">Coze</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/googlegemini.svg" alt="Gemini" class="ai-logo-img" /></div>
+              <span class="ai-name">Gemini</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/openai.svg" alt="ChatGPT" class="ai-logo-img" /></div>
+              <span class="ai-name">ChatGPT</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/anthropic.svg" alt="Claude" class="ai-logo-img" /></div>
+              <span class="ai-name">Claude</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/anthropic.svg" alt="Claude Code" class="ai-logo-img" /></div>
+              <span class="ai-name">Claude Code</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-sd"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <span class="ai-name">Stable Diffusion</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-jimeng"><i class="fa-solid fa-dream"></i></div>
+              <span class="ai-name">即梦</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-qwen"><i class="fa-solid fa-comments"></i></div>
+              <span class="ai-name">千问</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-trae"><i class="fa-solid fa-bolt-lightning"></i></div>
+              <span class="ai-name">TRAE</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-cursor"><i class="fa-solid fa-terminal"></i></div>
+              <span class="ai-name">Cursor</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-svc"><i class="fa-solid fa-microphone"></i></div>
+              <span class="ai-name">SVC</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-rvc"><i class="fa-solid fa-volume-high"></i></div>
+              <span class="ai-name">RVC</span>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-icon ai-openclaw"><i class="fa-solid fa-claw-hammer"></i></div>
+              <span class="ai-name">OpenClaw</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 荣誉专利 -->
+  <section id="honors" class="honors section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="section-number">05</span>
+        <h2 class="section-title">
+          <span class="title-cn">荣誉 & 专利</span>
+          <span class="title-en">HONORS & PATENTS</span>
+        </h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="honors-grid">
+        <div class="honor-main glass-card reveal-item">
+          <div class="honor-trophy">🏆</div>
+          <h3>国家级金奖</h3>
+          <p>中国国际大学生创新大赛</p>
+          <div class="honor-sub">
+            <span>智能寻穴按摩设备 · 项目学生负责人</span>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">🥉</div>
+          <div class="honor-text">
+            <h4>国家级铜奖 ×2</h4>
+            <p>中国国际大学生创新大赛</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">🥇</div>
+          <div class="honor-text">
+            <h4>省一等奖</h4>
+            <p>福建省三维数字化建模大赛</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">📋</div>
+          <div class="honor-text">
+            <h4>国家级大创立项</h4>
+            <p>大学生创新创业训练计划</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">📜</div>
+          <div class="honor-text">
+            <h4>4项发明专利</h4>
+            <p>公开发明专利</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">🔧</div>
+          <div class="honor-text">
+            <h4>7项实用新型</h4>
+            <p>已授权实用新型专利</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">💾</div>
+          <div class="honor-text">
+            <h4>1项软件著作权</h4>
+            <p>智能化齿轮润滑控制管理系统</p>
+          </div>
+        </div>
+
+        <div class="honor-mini glass-card reveal-item">
+          <div class="honor-icon">🎓</div>
+          <div class="honor-text">
+            <h4>多项奖学金</h4>
+            <p>申利卡奖学金、专业奖学金等</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专利列表 -->
+      <div class="patents-section reveal-item">
+        <h3 class="patents-title">📑 专利成果</h3>
+        <div class="patents-grid">
+          <div class="patent-item">
+            <span class="patent-type invention">发明</span>
+            <p>基于多智能体协同的杂交水稻制种管理系统及方法</p>
+            <span class="patent-no">CN122596441A · 第一发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type invention">发明</span>
+            <p>用于水稻插秧机与秧苗仓运输装置</p>
+            <span class="patent-no">CN122181281A · 第一发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type invention">发明</span>
+            <p>大型果实自动采摘机及自动采摘方法</p>
+            <span class="patent-no">CN120500967A · 共同发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type invention">发明</span>
+            <p>阶梯孔隙率碳化硅基板及其制备方法</p>
+            <span class="patent-no">CN122102700A · 共同发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type utility">实用</span>
+            <p>注油嘴及注油设备</p>
+            <span class="patent-no">CN223768669U · 第一发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type utility">实用</span>
+            <p>塑料齿轮抹油装置</p>
+            <span class="patent-no">CN223832714U · 共同发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type utility">实用</span>
+            <p>齿轮的涂油润滑装置</p>
+            <span class="patent-no">CN223806603U · 共同发明人</span>
+          </div>
+          <div class="patent-item">
+            <span class="patent-type utility">实用</span>
+            <p>齿轮的自动自适应润滑装置</p>
+            <span class="patent-no">CN223839722U · 共同发明人</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我 -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="section-number">06</span>
+        <h2 class="section-title">
+          <span class="title-cn">联系我</span>
+          <span class="title-en">GET IN TOUCH</span>
+        </h2>
+        <div class="title-line"></div>
+        <p class="section-sub">期待与您的合作与交流</p>
+      </div>
+
+      <div class="contact-card glass-card reveal-item">
+        <div class="contact-grid">
+          <a href="tel:17357510751" class="contact-item">
+            <div class="ci-icon">📱</div>
+            <div class="ci-content">
+              <span class="ci-label">电话</span>
+              <span class="ci-value">17357510751</span>
+            </div>
+          </a>
+
+          <a href="mailto:2542512037@qq.com" class="contact-item">
+            <div class="ci-icon">📧</div>
+            <div class="ci-content">
+              <span class="ci-label">邮箱</span>
+              <span class="ci-value">2542512037@qq.com</span>
+            </div>
+          </a>
+
+          <div class="contact-item">
+            <div class="ci-icon">🎓</div>
+            <div class="ci-content">
+              <span class="ci-label">学校</span>
+              <span class="ci-value">集美大学诚毅学院</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="ci-icon">📚</div>
+            <div class="ci-content">
+              <span class="ci-label">专业</span>
+              <span class="ci-value">机械工程（机电方向）</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-cta">
+          <a href="mailto:2542512037@qq.com" class="btn btn-gold btn-large">
+            <span class="btn-text">发送邮件</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-glow"></div>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">YZ</span>
+        <span class="footer-name">詹逸诚 YiCheng Zhan</span>
+      </div>
+      <div class="footer-right">
+        <span>© 2024 All Rights Reserved</span>
+        <span class="footer-divider">|</span>
+        <span>Designed & Built with ⚡ by YC</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
