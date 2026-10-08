@@ -1,43 +1,46 @@
 /* ============================================
-   詹逸诚 YiCheng Zhan — Personal Portfolio
-   Black-Gold Tech Art Style
+   詹逸诚 — Personal Portfolio
+   Cyber Tech / Neon Blue Style
    ============================================ */
 
 /* ---------- CSS Variables ---------- */
 :root {
-  /* Black Gold Palette */
-  --bg-deep: #0a0a0f;
-  --bg-dark: #0f0f17;
-  --bg-card: rgba(20, 20, 30, 0.6);
-  --bg-card-hover: rgba(30, 30, 45, 0.7);
+  /* Cyber Tech Palette - Deep Space + Neon Cyan */
+  --bg-deep: #050816;
+  --bg-dark: #0a0f1f;
+  --bg-mid: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --bg-card-hover: rgba(30, 41, 59, 0.7);
   
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8c8;
-  --text-muted: #6a6a7a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
   
-  /* Gold Gradients */
-  --gold-1: #FFD700;
-  --gold-2: #FFA500;
-  --gold-3: #FF8C00;
-  --gold-4: #B8860B;
-  --gold-gradient: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
-  --gold-gradient-soft: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.1));
-  --gold-glow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 165, 0, 0.2);
-  --gold-glow-strong: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 165, 0, 0.3);
+  /* Neon Cyan / Electric Blue Gradients */
+  --neon-1: #00f0ff;
+  --neon-2: #0ea5e9;
+  --neon-3: #6366f1;
+  --neon-4: #8b5cf6;
+  --neon-gradient: linear-gradient(135deg, #00f0ff 0%, #0ea5e9 40%, #6366f1 75%, #8b5cf6 100%);
+  --neon-gradient-soft: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(99, 102, 241, 0.08));
+  --neon-glow: 0 0 20px rgba(0, 240, 255, 0.4), 0 0 40px rgba(14, 165, 233, 0.2);
+  --neon-glow-strong: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 60px rgba(99, 102, 241, 0.3);
   
   /* Accent Colors */
-  --accent-blue: #4fc3f7;
-  --accent-purple: #b388ff;
-  --accent-cyan: #00e5ff;
+  --accent-cyan: #00f0ff;
+  --accent-blue: #3b82f6;
+  --accent-purple: #a855f7;
+  --accent-pink: #ec4899;
   
   /* Borders */
-  --border-gold: rgba(255, 215, 0, 0.3);
-  --border-gold-strong: rgba(255, 215, 0, 0.6);
-  --border-dark: rgba(255, 255, 255, 0.06);
+  --border-neon: rgba(0, 240, 255, 0.25);
+  --border-neon-strong: rgba(0, 240, 255, 0.5);
+  --border-dark: rgba(148, 163, 184, 0.08);
   
   /* Typography */
   --font-display: 'Orbitron', 'Inter', sans-serif;
   --font-sans: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   
   /* Layout */
   --container-max: 1280px;
@@ -70,13 +73,45 @@ body {
   min-height: 100vh;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 240, 255, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(99, 102, 241, 0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(139, 92, 246, 0.04), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 img, svg { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
 ::selection {
-  background: rgba(255, 215, 0, 0.3);
+  background: rgba(0, 240, 255, 0.3);
   color: #fff;
 }
 
@@ -97,7 +132,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, rgba(99, 102, 241, 0.05) 40%, transparent 70%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -137,13 +172,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+  background: linear-gradient(90deg, transparent, var(--neon-1), transparent);
   opacity: 0.5;
 }
 
 .glass-card:hover {
-  border-color: var(--border-gold);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1), 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-color: var(--border-neon);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), 0 20px 60px rgba(0, 0, 0, 0.3);
   transform: translateY(-4px);
 }
 
@@ -152,7 +187,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   width: 20px;
   height: 20px;
-  border-color: var(--gold-1);
+  border-color: var(--neon-1);
   opacity: 0.6;
   z-index: 2;
 }
@@ -166,6 +201,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .section {
   position: relative;
   padding: var(--section-padding);
+  overflow: hidden;
 }
 
 .section-header {
@@ -181,7 +217,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--gold-1);
+  color: var(--neon-1);
   letter-spacing: 0.2em;
   opacity: 0.8;
   margin-bottom: 12px;
@@ -206,7 +242,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .title-cn {
   font-family: 'Noto Sans SC', var(--font-sans);
   font-weight: 900;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -224,7 +260,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .title-line {
   width: 60px;
   height: 3px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   border-radius: 2px;
   margin-top: 8px;
 }
@@ -280,7 +316,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 900;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -290,7 +326,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .logo-line {
   width: 30px;
   height: 2px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   border-radius: 1px;
 }
 
@@ -316,14 +352,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   border-radius: 1px;
   transition: width 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--gold-1);
+  color: var(--neon-1);
 }
 
 .nav-link:hover::after,
@@ -342,7 +378,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-toggle span {
   width: 24px;
   height: 2px;
-  background: var(--gold-1);
+  background: var(--neon-1);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -364,7 +400,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .btn-gold {
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   color: #0a0a0f;
   font-weight: 700;
   box-shadow: 0 4px 20px rgba(255, 165, 0, 0.3);
@@ -383,7 +419,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.4);
 }
 
 .btn-gold:hover::before {
@@ -398,14 +434,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--border-gold-strong);
+  border: 2px solid var(--border-neon-strong);
 }
 
 .btn-outline:hover {
-  background: var(--gold-gradient-soft);
-  border-color: var(--gold-1);
+  background: var(--neon-gradient-soft);
+  border-color: var(--neon-1);
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
 .btn-arrow {
@@ -434,8 +470,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -447,7 +483,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+  background: linear-gradient(90deg, transparent, var(--neon-1), transparent);
   opacity: 0.3;
   animation: scanLine 4s linear infinite;
 }
@@ -469,13 +505,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   gap: 10px;
   padding: 8px 20px;
-  background: var(--gold-gradient-soft);
-  border: 1px solid var(--border-gold);
+  background: var(--neon-gradient-soft);
+  border: 1px solid var(--border-neon);
   border-radius: 50px;
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--gold-1);
+  color: var(--neon-1);
   letter-spacing: 0.15em;
   margin-bottom: 28px;
 }
@@ -483,9 +519,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .label-dot {
   width: 8px;
   height: 8px;
-  background: var(--gold-1);
+  background: var(--neon-1);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--gold-1);
+  box-shadow: 0 0 10px var(--neon-1);
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -538,8 +574,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: 0.05em;
 }
 
-.gold-text {
-  background: var(--gold-gradient);
+.neon-text {
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -554,14 +590,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .typing-text {
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .typing-cursor {
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 300;
   animation: blink 0.8s infinite;
   margin-left: 2px;
@@ -604,7 +640,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 800;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -613,7 +649,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .stat-unit {
   font-size: 1rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 600;
   margin-top: 4px;
 }
@@ -627,7 +663,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stat-divider {
   width: 1px;
   height: 50px;
-  background: linear-gradient(to bottom, transparent, var(--border-gold), transparent);
+  background: linear-gradient(to bottom, transparent, var(--border-neon), transparent);
 }
 
 /* Hero Visual */
@@ -648,7 +684,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--border-neon);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -699,7 +735,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   justify-content: center;
   animation: coreFloat 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
+  filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.3));
 }
 
 .core-inner svg {
@@ -721,7 +757,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 8px 16px;
   background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--border-neon);
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -779,7 +815,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .scroll-mouse {
   width: 24px;
   height: 40px;
-  border: 2px solid var(--border-gold);
+  border: 2px solid var(--border-neon);
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -789,7 +825,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .scroll-wheel {
   width: 4px;
   height: 8px;
-  background: var(--gold-1);
+  background: var(--neon-1);
   border-radius: 2px;
   animation: scrollWheel 1.5s ease-in-out infinite;
 }
@@ -840,7 +876,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   right: -4px;
   bottom: -4px;
   border-radius: 50%;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   animation: rotateRing 8s linear infinite;
   opacity: 0.6;
 }
@@ -874,7 +910,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .profile-title {
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 500;
   margin-bottom: 10px;
   font-size: 0.95rem;
@@ -888,11 +924,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .p-tag {
   padding: 3px 10px;
-  background: var(--gold-gradient-soft);
-  border: 1px solid var(--border-gold);
+  background: var(--neon-gradient-soft);
+  border: 1px solid var(--border-neon);
   border-radius: 4px;
   font-size: 0.8rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
 }
 
 .about-bio p {
@@ -912,7 +948,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--text-primary);
   margin-bottom: 24px;
   padding-left: 16px;
-  border-left: 3px solid var(--gold-1);
+  border-left: 3px solid var(--neon-1);
 }
 
 .advantage-list {
@@ -933,9 +969,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .advantage-item:hover {
-  border-color: var(--border-gold);
+  border-color: var(--border-neon);
   transform: translateX(6px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
 }
 
 .adv-icon {
@@ -946,7 +982,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gold-gradient-soft);
+  background: var(--neon-gradient-soft);
   border-radius: 12px;
 }
 
@@ -978,7 +1014,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--gold-1), var(--gold-3), transparent);
+  background: linear-gradient(to bottom, var(--neon-1), var(--neon-3), transparent);
 }
 
 .project-item {
@@ -1003,8 +1039,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--gold-gradient);
-  box-shadow: var(--gold-glow);
+  background: var(--neon-gradient);
+  box-shadow: var(--neon-glow);
   border: 3px solid var(--bg-deep);
   z-index: 2;
 }
@@ -1012,7 +1048,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .marker-line {
   width: 2px;
   height: 40px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   opacity: 0.5;
 }
 
@@ -1032,7 +1068,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .project-date {
   font-family: var(--font-display);
   font-size: 0.85rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 600;
   letter-spacing: 0.05em;
 }
@@ -1069,9 +1105,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .project-tags .p-tag.gold {
-  background: var(--gold-gradient-soft);
-  border-color: var(--border-gold);
-  color: var(--gold-1);
+  background: var(--neon-gradient-soft);
+  border-color: var(--border-neon);
+  color: var(--neon-1);
   font-weight: 600;
 }
 
@@ -1097,7 +1133,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .h-icon {
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-size: 1rem;
   flex-shrink: 0;
 }
@@ -1112,11 +1148,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .result-badge {
   padding: 6px 14px;
-  background: var(--gold-gradient-soft);
-  border: 1px solid var(--border-gold);
+  background: var(--neon-gradient-soft);
+  border: 1px solid var(--border-neon);
   border-radius: 6px;
   font-size: 0.82rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 500;
 }
 
@@ -1142,7 +1178,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .exp-logo {
   width: 60px;
   height: 60px;
-  background: var(--gold-gradient-soft);
+  background: var(--neon-gradient-soft);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -1154,7 +1190,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 0.85rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
 }
 
 .exp-meta h3 {
@@ -1166,7 +1202,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .exp-role {
   font-size: 0.9rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
   font-weight: 500;
   display: block;
   margin-bottom: 2px;
@@ -1194,11 +1230,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .li-dot {
   width: 6px;
   height: 6px;
-  background: var(--gold-1);
+  background: var(--neon-1);
   border-radius: 50%;
   margin-top: 10px;
   flex-shrink: 0;
-  box-shadow: 0 0 6px var(--gold-1);
+  box-shadow: 0 0 6px var(--neon-1);
 }
 
 /* ---------- Skills Section ---------- */
@@ -1218,8 +1254,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .skill-category:hover {
-  border-color: var(--border-gold);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
+  border-color: var(--border-neon);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
 }
 
 .skill-category.skill-wide {
@@ -1241,7 +1277,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gold-gradient-soft);
+  background: var(--neon-gradient-soft);
   border-radius: 10px;
 }
 
@@ -1254,7 +1290,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cat-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, var(--border-gold), transparent);
+  background: linear-gradient(90deg, var(--border-neon), transparent);
   margin-left: 12px;
 }
 
@@ -1279,9 +1315,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: center;
   flex-shrink: 0;
   font-size: 1.1rem;
-  color: var(--gold-1);
-  background: var(--gold-gradient-soft);
-  border: 1px solid var(--border-gold);
+  color: var(--neon-1);
+  background: var(--neon-gradient-soft);
+  border: 1px solid var(--border-neon);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -1291,12 +1327,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 22px;
   height: 22px;
   object-fit: contain;
-  filter: invert(78%) sepia(60%) saturate(1500%) hue-rotate(5deg) brightness(100%);
+  filter: invert(75%) sepia(100%) saturate(3000%) hue-rotate(160deg) brightness(105%);
   transition: all 0.3s ease;
 }
 
 .skill-item:hover .skill-logo-img {
-  filter: invert(100%) brightness(200%);
+  filter: invert(100%) brightness(200%) drop-shadow(0 0 8px rgba(0, 240, 255, 0.8));
   transform: scale(1.15);
 }
 
@@ -1318,9 +1354,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .skill-item:hover .skill-icon {
   transform: scale(1.1) rotate(-5deg);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
   color: #fff;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
 }
 
 .skill-icon .plus-small {
@@ -1347,11 +1383,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .skill-fill {
   height: 100%;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   border-radius: 3px;
   width: 0;
   transition: width 1.5s var(--ease-out);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
 /* AI Tools Grid - Card Style */
@@ -1383,15 +1419,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   transform: scaleX(0);
   transition: transform 0.4s var(--ease-out);
 }
 
 .ai-tool-card:hover {
-  border-color: var(--border-gold);
+  border-color: var(--border-neon);
   transform: translateY(-6px);
-  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.15), 0 0 20px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1);
 }
 
 .ai-tool-card:hover::before {
@@ -1406,9 +1442,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  color: var(--gold-1);
-  background: var(--gold-gradient-soft);
-  border: 1px solid var(--border-gold);
+  color: var(--neon-1);
+  background: var(--neon-gradient-soft);
+  border: 1px solid var(--border-neon);
   transition: all 0.4s var(--ease-out);
 }
 
@@ -1416,19 +1452,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 26px;
   height: 26px;
   object-fit: contain;
-  filter: invert(78%) sepia(60%) saturate(1500%) hue-rotate(5deg) brightness(100%);
+  filter: invert(75%) sepia(100%) saturate(3000%) hue-rotate(160deg) brightness(105%);
   transition: all 0.4s var(--ease-out);
 }
 
 .ai-tool-card:hover .ai-icon {
   transform: scale(1.15) rotateY(360deg);
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   color: #fff;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
 }
 
 .ai-tool-card:hover .ai-logo-img {
-  filter: invert(100%) brightness(200%);
+  filter: invert(100%) brightness(200%) drop-shadow(0 0 8px rgba(0, 240, 255, 0.8));
 }
 
 .ai-name {
@@ -1440,7 +1476,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .ai-tool-card:hover .ai-name {
-  color: var(--gold-1);
+  color: var(--neon-1);
 }
 
 .ai-logo {
@@ -1488,14 +1524,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 @keyframes trophyShine {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5)); }
   50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
 }
 
 .honor-main h3 {
   font-size: 1.8rem;
   font-weight: 800;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1509,10 +1545,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .honor-sub {
   padding: 8px 16px;
-  background: var(--gold-gradient-soft);
+  background: var(--neon-gradient-soft);
   border-radius: 6px;
   font-size: 0.85rem;
-  color: var(--gold-1);
+  color: var(--neon-1);
 }
 
 .honor-mini {
@@ -1568,7 +1604,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .patent-item:hover {
-  border-color: var(--border-gold);
+  border-color: var(--border-neon);
   transform: translateY(-2px);
 }
 
@@ -1634,8 +1670,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 a.contact-item:hover {
-  border-color: var(--border-gold);
-  background: var(--gold-gradient-soft);
+  border-color: var(--border-neon);
+  background: var(--neon-gradient-soft);
   transform: translateY(-2px);
 }
 
@@ -1646,7 +1682,7 @@ a.contact-item:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gold-gradient-soft);
+  background: var(--neon-gradient-soft);
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -1690,8 +1726,8 @@ a.contact-item:hover {
   transform: translateX(-50%);
   width: 60%;
   height: 1px;
-  background: var(--gold-gradient);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  background: var(--neon-gradient);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
 }
 
 .footer-content {
@@ -1714,7 +1750,7 @@ a.contact-item:hover {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 900;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1744,7 +1780,7 @@ a.contact-item:hover {
   right: 30px;
   width: 48px;
   height: 48px;
-  background: var(--gold-gradient);
+  background: var(--neon-gradient);
   color: #0a0a0f;
   border-radius: 50%;
   display: flex;
@@ -1767,7 +1803,7 @@ a.contact-item:hover {
 
 .back-to-top:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.5);
 }
 
 /* ---------- Reveal Animation ---------- */
@@ -1790,15 +1826,15 @@ a.contact-item:hover {
 }
 
 /* ---------- Enhanced Gold Animations ---------- */
-.gold-text {
-  background: var(--gold-gradient);
+.neon-text {
+  background: var(--neon-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   position: relative;
 }
 
-.gold-text::after {
+.neon-text::after {
   content: attr(data-text);
   position: absolute;
   left: 0;
@@ -1819,10 +1855,10 @@ a.contact-item:hover {
 /* ---------- Glowing Pulse Animation ---------- */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.3), 0 0 10px rgba(0, 240, 255, 0.2);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 40px rgba(0, 240, 255, 0.3);
   }
 }
 
@@ -1845,7 +1881,7 @@ a.contact-item:hover {
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -1854,7 +1890,7 @@ a.contact-item:hover {
 .hero::before {
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
@@ -1894,8 +1930,8 @@ a.contact-item:hover {
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
@@ -1907,7 +1943,7 @@ a.contact-item:hover {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+  background: linear-gradient(90deg, transparent, var(--neon-1), transparent);
   opacity: 0.6;
   animation: scan-down 4s linear infinite;
 }
@@ -2012,10 +2048,12 @@ a.contact-item:hover {
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: rgba(10, 10, 15, 0.95);
+    background: rgba(10, 15, 31, 0.96);
     backdrop-filter: blur(20px);
     padding: 20px;
     border-bottom: 1px solid var(--border-dark);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
   }
 
   .nav-links.open {

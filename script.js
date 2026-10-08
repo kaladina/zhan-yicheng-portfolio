@@ -1,6 +1,6 @@
 /* ============================================
-   詹逸诚 YiCheng Zhan — Personal Portfolio
-   Black-Gold Tech Art — Interactive Scripts
+   詹逸诚  — Personal Portfolio
+   Cyber Tech Tech Art — Interactive Scripts
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.speedX = (Math.random() - 0.5) * 0.5;
       this.speedY = (Math.random() - 0.5) * 0.5;
       this.opacity = Math.random() * 0.5 + 0.2;
-      this.goldHue = Math.random() * 30 + 35; // Gold-ish hue
+      this.neonHue = Math.random() * 40 + 180; // Cyan-blue-ish hue
     }
 
     update() {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${this.goldHue}, 100%, 60%, ${this.opacity})`;
+      ctx.fillStyle = `hsla(${this.neonHue}, 100%, 70%, ${this.opacity})`;
       ctx.fill();
     }
   }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(255, 215, 0, ${opacity})`;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -359,9 +359,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 11. Typing Effect for Hero Subtitle (optional enhancement)
   // ============================================
   // Subtle text shimmer effect for gold text
-  const goldTexts = document.querySelectorAll('.gold-text');
+  const neonTexts = document.querySelectorAll('.neon-text');
   
-  goldTexts.forEach(text => {
+  neonTexts.forEach(text => {
     text.style.position = 'relative';
   });
 
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
       isGlitching = true;
       
       heroTitle.style.textShadow = `
-        2px 0 rgba(255, 215, 0, 0.7),
+        2px 0 rgba(0, 240, 255, 0.7),
         -2px 0 rgba(79, 195, 247, 0.5)
       `;
       
@@ -425,8 +425,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // ============================================
   // 14. Console Welcome Message
   // ============================================
-  console.log('%c⚡ 詹逸诚 YiCheng Zhan', 'font-size: 22px; font-weight: 900; color: #FFD700;');
-  console.log('%c机械工程 · 智能设备研发 · 技术创新', 'font-size: 14px; color: #4FC3F7;');
+  console.log('%c⚡ 詹逸诚 ', 'font-size: 22px; font-weight: 900; color: #00f0ff;');
+  console.log('%c机械工程 · 智能设备研发 · 技术创新', 'font-size: 14px; color: #6366f1;');
   console.log('%c欢迎来到我的个人网站 🚀', 'font-size: 12px; color: #888;');
 
   // ============================================
@@ -457,11 +457,11 @@ document.addEventListener('DOMContentLoaded', function() {
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #FFD700, #FFA500, #FF8C00);
+    background: linear-gradient(90deg, #00f0ff, #0ea5e9, #6366f1);
     z-index: 1000;
     width: 0%;
     transition: width 0.1s ease;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
   `;
   document.body.appendChild(progressBar);
 
@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   skillChips.forEach(chip => {
     chip.addEventListener('mouseenter', function() {
-      this.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.4)';
+      this.style.boxShadow = '0 0 20px rgba(0, 240, 255, 0.4)';
     });
     
     chip.addEventListener('mouseleave', function() {
@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   patentItems.forEach(item => {
     item.addEventListener('mouseenter', function() {
-      this.style.boxShadow = '0 0 25px rgba(255, 215, 0, 0.15)';
+      this.style.boxShadow = '0 0 25px rgba(0, 240, 255, 0.15)';
     });
     
     item.addEventListener('mouseleave', function() {
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // ============================================
   // 20. Gold Text Shimmer - Set data-text attributes
   // ============================================
-  goldTexts.forEach(text => {
+  neonTexts.forEach(text => {
     text.setAttribute('data-text', text.textContent);
     text.style.position = 'relative';
   });
@@ -638,11 +638,11 @@ document.addEventListener('DOMContentLoaded', function() {
         top: ${y}px;
         width: 6px;
         height: 6px;
-        background: var(--gold-1);
+        background: var(--neon-1);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
       `;
       document.body.appendChild(particle);
       
